@@ -9,50 +9,53 @@
 #include <string>
 #include <iterator>
 using namespace std;
-map<string, int> crear(){
+class seccion{
     map<string, int> retorno;
-    fstream file;
-    file.open("archivo.txt",ios::in);
-    string b;
-    int cont =0;
-    while(getline(file,b)){
-        cont++;
-    }
-    file.close();
-    file.open("archivo.txt",ios::in);
-    string a;
-    string key;
-    int value;
-    for(int i= 0; i < cont; i++ ){
-        file >> a;
-        if(a == "C"){
-               file >>key;
-               file >> value;
-               retorno.insert(pair<string,int>(key,value));
-
+public:
+    seccion(){
+        map<string, int> retorno;
+        fstream file;
+        file.open("archivo.txt",ios::in);
+        string b;
+        int cont =0;
+        while(getline(file,b)){
+            cont++;
         }
-        else if(a=="L"){
-            file >> key;
+        file.close();
+        file.open("archivo.txt",ios::in);
+        string a;
+        string key;
+        int value;
+        for(int i= 0; i < cont; i++ ){
+            file >> a;
+            if(a == "C"){
+                file >>key;
+                file >> value;
+                retorno.insert(pair<string,int>(key,value));
 
-            if(key =="All"){
-                for(auto it = retorno.cbegin(); it!=retorno.cend();++it){
-                    cout << it->first << "" << it->second << " " << endl;
+            }
+            else if(a=="L"){
+                file >> key;
+
+                if(key =="All"){
+                    for(auto it = retorno.cbegin(); it!=retorno.cend();++it){
+                        cout << it->first << "" << it->second << " " << endl;
+                    }
+                }
+                else{
+                    cout << retorno[key];
                 }
             }
-            else{
-                cout << retorno[key];
+            else if(a== "D"){
+                file >> key;
+                retorno.erase(key);
+
             }
         }
-        else if(a== "D"){
-            file >> key;
-            retorno.erase(key);
-            
-        }
     }
-    return retorno;
-}
+};
 int main() {
     fstream file;
-    map<string,int> a;
-    a = crear();
+    seccion a;
 }
+
