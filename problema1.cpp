@@ -72,6 +72,6 @@ int main() {
     b.print_matriz();
     matriz<int> c(2,2);
     c=b+(a);
-    cout << "suma de las matrices" << endl;
+    cout << "La matriz c" << endl;
     c.print_matriz();
 }
