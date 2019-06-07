@@ -64,11 +64,14 @@ public:
 int main() {
     matriz<int> a(2,2);
     a.llenar_rand();
+    cout << "matriz a" << endl;
     a.print_matriz();
     matriz<int> b(2,2);
     b.llenar_rand();
+    cout << "matriz b" << endl;
     b.print_matriz();
     matriz<int> c(2,2);
     c=b+(a);
+    cout << "suma de las matrices" << endl;
     c.print_matriz();
 }
